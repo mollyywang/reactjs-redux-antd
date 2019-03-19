@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import { Button,Layout } from 'antd';
+import { Route, Link } from 'react-router-dom'
+import Search from './containers/search'
+import Results from './containers/results'
+
+const {Header, Footer,Content} = Layout;
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Layout>
+          <Header>header</Header>
+            <Content>
+              <Route exact path="/" component={Search} />
+              <Route exact path="/results" component={Results} />
+            </Content>
+          <Footer>footer</Footer>
+        </Layout>
       </div>
     );
   }
 }
+
 
 export default App;
