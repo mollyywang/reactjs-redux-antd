@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.css';
+import './styles/index.less';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import configureStore, { history } from './configStore'
 import { ConnectedRouter } from 'connected-react-router'
 import { Provider } from 'react-redux'
 
-const store = configureStore(/* provide initial state if any */);
+
+const store = configureStore({
+
+});
+
 
 ReactDOM.render(
   <Provider store={store}>

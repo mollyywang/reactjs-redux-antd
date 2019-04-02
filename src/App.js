@@ -1,30 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './styles/App.css';
-import { Button,Layout } from 'antd';
-import { Route, Link } from 'react-router-dom'
-import Search from './containers/search'
-import Results from './containers/results'
+import { Route, Switch } from 'react-router'
 
-const {Header, Footer,Content} = Layout;
+import searchP from './pages/searchP'
+import starP from './pages/starP'
+import aboutP from './pages/aboutP'
+
 
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Layout>
-          <Header>header</Header>
-            <Content>
-              <Route exact path="/" component={Search} />
-              <Route exact path="/results" component={Results} />
-            </Content>
-          <Footer>footer</Footer>
-        </Layout>
-      </div>
-    );
+
+  constructor(props) {
+    super(props);
   }
+  render(){
+  return (
+    <div className="App">
+      <Switch>
+        <Route exact path="/" component={searchP} />
+        <Route exact path="/about" component={aboutP} />
+        <Route exact path="/star" component={starP} />
+        <Route exact path="/search" component={searchP} />
+        <Route exact path="/search/:key" component={searchP} />
+      </Switch> 
+    </div>
+  )}
 }
+
 
 
 export default App;

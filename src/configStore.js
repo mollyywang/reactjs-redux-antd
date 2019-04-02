@@ -1,26 +1,42 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import { connectRouter, routerMiddleware } from 'connected-react-router'
+import { combineReducers,createStore, applyMiddleware, compose } from 'redux'
+import { routerMiddleware,connectRouter } from 'connected-react-router'
 import thunk from 'redux-thunk'
+import {createBrowserHistory} from 'history';
+import starReducer from './ducks/starDk';
+import searchReducer from './ducks/searchDk';
 
-import createRootReducer from './modules'
 
-const initialState = {}
-const enhancers = []
+
+
+export const history = createBrowserHistory()
+
 const middleware = [thunk, routerMiddleware(history)]
-const createHistory = require("history").createBrowserHistory
 
-export const history = createHistory()
+const rootReducer = combineReducers({
+  router: connectRouter(history),
+  star: starReducer,
+  search: searchReducer,
+})
 
-export default function configureStore(preloadedState) {
+const enhancers = []
+if (process.env.NODE_ENV === 'development') {
+  const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // for debugging
+
+  if (typeof devToolsExtension === 'function') {
+    enhancers.push(devToolsExtension)
+  }
+}
+
+const composedEnhancers = compose(
+    applyMiddleware(...middleware),
+    ...enhancers
+)
+
+export default function configureStore(initialState) {
   const store = createStore(
-    createRootReducer(history), // root reducer with router state
-    preloadedState,
-    compose(
-      applyMiddleware(
-        routerMiddleware(history), // for dispatching history actions
-        // ... other middlewares ...
-      ),
-    ),
+    rootReducer,
+    initialState,
+    composedEnhancers
   )
   return store;
 }
