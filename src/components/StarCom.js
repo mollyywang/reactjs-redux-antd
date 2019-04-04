@@ -16,7 +16,9 @@ class Star extends Component {
         starGet();
     }
     render(){
-        const {items,removeFromStar} = this.props;
+        
+        const {items} = this.props;
+
         return (
             <div className="star-con">
                     {items.length > 0 && (
@@ -38,7 +40,6 @@ class Star extends Component {
 
 Star.propTypes = {
     items: PropTypes.array,
-    removeFromStar: PropTypes.func.isRequired
 }
 
 export default Star;

@@ -1,9 +1,8 @@
-import { push } from 'connected-react-router'
 
 // actions
 
 const initialState = {
-    name: 'molly' 
+    name: '' 
 };
 
 // reducer
@@ -38,6 +37,5 @@ export function changeName(name) {
 export function getName(state, props) {
     return state.search.name;
 }
-
 
 

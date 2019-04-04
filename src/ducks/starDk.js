@@ -36,7 +36,6 @@ function handleStarRemove(state, payload) {
 }
 
 function handleStarGet(state, payload) {
-    console.log('eee');
     //去服务器拿...todo ????
     return {
         ...state,

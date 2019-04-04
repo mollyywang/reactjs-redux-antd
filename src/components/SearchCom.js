@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import { Button,Input,Icon } from 'antd';
+
 class Search extends Component {
     constructor(props) {
         super(props);

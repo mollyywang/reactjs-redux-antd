@@ -4,7 +4,11 @@ import { getItems, removeFromStar,starGet } from '../ducks/starDk';
 
 const mapStateToProps = (state, props) => {
     return {
-        items: getItems(state, props)
+        items: getItems(state, props),
+        // page:getPage(state, props),
+        // counts:getCounts(state, props),
+        // index:getIndex(state, props),
+        // allnums:getNums(state, props)
     }
 }
 
