@@ -18,6 +18,8 @@ export default function productlists(state = initialState,action={}) {
             return handleProductsSuccess(state, action.payload)
         case 'PRODUCTS/FETCH_ERROR':
             return handleProductsError(state, action.payload)
+        case 'PRODUCTS/FETCH_ING':
+            return handleProductsIng(state)
         default:
             return state;
     }
@@ -26,7 +28,8 @@ export default function productlists(state = initialState,action={}) {
 function handleProductsSuccess(state, payload){
     console.log(payload)
     return {
-        ...state
+        ...state,
+        isFetching:false
     }
 }
 
@@ -37,23 +40,34 @@ function handleProductsError(state, payload){
     }
 }
 
+function handleProductsIng(state){
+    return {
+        ...state,
+        isFetching:true
+    }
+}
 
-export const fetchGithubData = () => {
+export const productsGet = (name) => {
     return async (dispatch) => {
-
+        dispatch(fetchIng())
         try{
-            // const data = await getData(2)
-            const res = await axios.get(apiUrl)
+            const res = await axios.get(apiUrl)//改成post？？
             dispatch(fetchSuccess(res.data))
-            // console.log(res)
         } catch (e){
             dispatch(fetchError(e))
-            // console.error(e)
         }
-        
     };
 };
 
+
+// action creators
+export function fetchIng() {
+    return {
+        type: 'PRODUCTS/FETCH_ING',
+        payload: {
+        }
+    }
+}
 
 
 // action creators
@@ -88,6 +102,9 @@ export function getCounts(state) {
 }
 export function getIndexx(state) {
     return state.productlists.indexx;
+}
+export function getFetching(state) {
+    return state.productlists.isFetching;
 }
 export function getProduct(state, props) {
     return state.productlists.find(item => item.id === props.id);

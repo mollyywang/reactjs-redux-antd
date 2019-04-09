@@ -18,17 +18,14 @@ class ProductList extends Component{
 
 
     handleScroll = (dom)=>{
-        //2.每一次都要这样拿变量吗？都要去prop去取
-        
         const {productsGet,name,indexx,allNums,counts} = this.props;
         console.log(dom.scrollHeight-dom.scrollTop-dom.offsetHeight);
         //翻页 loading
         if(dom.scrollHeight-dom.scrollTop-dom.offsetHeight<100){
             if(indexx>=allNums){
-                //3.怎么把fn解绑
                 console.log('end')
             }else{
-                productsGet(name,()=>{console.log(333)});
+                productsGet(name);
             }
         }
     }
@@ -49,9 +46,7 @@ class ProductList extends Component{
 
     
     render (){
-        const {items} = this.props;
-        console.log(items)
-        console.log('0.1------------------')
+        const {items,isFetching} = this.props;
         return(
                 <ul className="productlist"  ref="productlist">
                 {items.map(product => (
@@ -59,13 +54,14 @@ class ProductList extends Component{
                         <ProductCon {...product} />
                     </li>
                 ))}
-                <Spin size="large" />
+                <Spin size="large" spinning={isFetching}/>
                 </ul>
         )
     }
 }
 
 ProductList.propTypes = {
+    isFetching:PropTypes.bool,
     name:PropTypes.string,
     items: PropTypes.array,
     productsGet: PropTypes.func,
