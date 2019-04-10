@@ -6,12 +6,12 @@ import { getName } from '../ducks/searchDk';
 
 const mapStateToProps = (state, props) => {
     return {
-        name: getName(state, props),
-        items: getItems(state, props),
-        allNums: getAllNums(state, props),
-        indexx: getIndexx(state, props),
-        counts:getCounts(state, props),
-        isFetching:getFetching(state, props)
+        name: getName(state),
+        items: getItems(state),
+        allNums: getAllNums(state),
+        indexx: getIndexx(state),
+        counts:getCounts(state),
+        isFetching:getFetching(state)
     }
 }
 

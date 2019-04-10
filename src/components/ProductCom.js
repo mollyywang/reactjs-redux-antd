@@ -11,12 +11,12 @@ class Product extends Component{
     }
 
     handleStarClick = () => {
-        const { id, name, price, image,urllink,from,isInStar, removeFromStar, addToStar } = this.props;
+        const { _id, name, price, image,urllink,from,isInStar, removeFromStar, addToStar } = this.props;
         if (isInStar) {
-            removeFromStar(id);
+            removeFromStar(_id);
         } else {
             addToStar({
-                id:id,
+                _id:_id,
                 name:name,
                 price: price,
                 image:image,
@@ -31,7 +31,6 @@ class Product extends Component{
       
     isDoDelete = (typeS,isInStar)=>{
         if(typeS){
-            console.log('---33-')
             return(
             <Popconfirm title="Detele item ?" okText="Yes" cancelText="No" onConfirm={this.confirm} >
             <button
@@ -67,7 +66,7 @@ class Product extends Component{
 }
 
 Product.propTypes = {
-    id: PropTypes.number,
+    _id: PropTypes.string,
     name: PropTypes.string,
     price: PropTypes.number,
     image: PropTypes.string,

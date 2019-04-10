@@ -23,28 +23,21 @@ function handleStarAdd(state, payload) {
     return {
         ...state,
         items: [ ...state.items, payload.productDetail ],
-        itemIds:[...state.itemIds,payload.productDetail.id]
+        itemIds:[...state.itemIds,payload.productDetail._id]
     };
 }
 
 function handleStarRemove(state, payload) {
     return {
         ...state,
-        items: state.items.filter(item => item.id !== payload.productId),
+        items: state.items.filter(item => item._id !== payload.productId),
         itemIds: state.itemIds.filter(id => id !== payload.productId),
     };
 }
 
 function handleStarGet(state, payload) {
-    //去服务器拿...todo ????
     return {
-        ...state,
-        items: [
-            {id: 99, name: 'name99',price:236,image: 'images/04.jpg',},
-            {id: 2, name: 'name2',price:189,image: 'images/02.jpg',},
-
-        ],
-        itemIds: [99,2]
+        ...state
     };
 }
 // action creators
@@ -75,7 +68,7 @@ export function starGet() {
 }
 // selectors
 export function isInStar(state, props) {
-    return state.star.itemIds.indexOf(props.id) !== -1;
+    return state.star.itemIds.indexOf(props._id) !== -1;
 }
 
 export function getItems(state) {

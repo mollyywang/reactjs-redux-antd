@@ -16,15 +16,13 @@ class Star extends Component {
         starGet();
     }
     render(){
-        
         const {items} = this.props;
-
         return (
             <div className="star-con">
                     {items.length > 0 && (
                         <ul className="starlist-item">
                             {items.map(product => (
-                                <li key={product.id} className="starlist-item">
+                                <li key={product._id} className="starlist-item">
                                     <Product {...product} typeS="delete"/>
                                 </li>
                             ))}
@@ -40,6 +38,7 @@ class Star extends Component {
 
 Star.propTypes = {
     items: PropTypes.array,
+    itemIds: PropTypes.array,
 }
 
 export default Star;

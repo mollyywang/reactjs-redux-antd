@@ -1,6 +1,4 @@
-import {getData} from '../data/productsAj';
 import axios from 'axios';
-const apiUrl = 'https://api.github.com/users/KrunalLathiya';
 
 
 const initialState = {
@@ -26,10 +24,12 @@ export default function productlists(state = initialState,action={}) {
 }
 
 function handleProductsSuccess(state, payload){
-    console.log(payload)
     return {
         ...state,
-        isFetching:false
+        indexx:state.indexx+state.counts,
+        isFetching:false,
+        allNums:payload.data.data.allNums,
+        items:state.items.concat(payload.data.data.data),
     }
 }
 
@@ -48,14 +48,22 @@ function handleProductsIng(state){
 }
 
 export const productsGet = (name) => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
+        const state = getState()
         dispatch(fetchIng())
-        try{
-            const res = await axios.get(apiUrl)//改成post？？
-            dispatch(fetchSuccess(res.data))
-        } catch (e){
-            dispatch(fetchError(e))
-        }
+        setTimeout(async ()=>{
+            try{
+                const res = await axios.post('http://127.0.0.1:1234/api/p/products', {
+                    "indexx":state.productlists.indexx,
+                    "counts":state.productlists.counts,
+                    "name":name
+                })
+                dispatch(fetchSuccess(res.data))
+            } catch (e){
+                dispatch(fetchError(e))
+            }
+        },2000)
+        
     };
 };
 

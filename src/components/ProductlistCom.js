@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import PropTypes from 'prop-types';
 import ProductCon from '../connectors/ProductCon';
 import {debounce} from '../util/uiUtil'
-import { Spin } from 'antd';
+import { Spin, Divider } from 'antd';
 
 import '../styles/product.less'
 
@@ -15,17 +15,18 @@ class ProductList extends Component{
         
     }
 
-
-
     handleScroll = (dom)=>{
-        const {productsGet,name,indexx,allNums,counts} = this.props;
-        console.log(dom.scrollHeight-dom.scrollTop-dom.offsetHeight);
+        const {productsGet,name,indexx,counts,allNums,isFetching} = this.props;
+        console.log();
         //翻页 loading
         if(dom.scrollHeight-dom.scrollTop-dom.offsetHeight<100){
             if(indexx>=allNums){
                 console.log('end')
             }else{
-                productsGet(name);
+                if(!!isFetching){
+                    return false;
+                }
+                productsGet(name,indexx,counts);
             }
         }
     }
@@ -50,7 +51,7 @@ class ProductList extends Component{
         return(
                 <ul className="productlist"  ref="productlist">
                 {items.map(product => (
-                    <li key={product.id} className="productlist-item">
+                    <li key={product._id} className="productlist-item">
                         <ProductCon {...product} />
                     </li>
                 ))}
