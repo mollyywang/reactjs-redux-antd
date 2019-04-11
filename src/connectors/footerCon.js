@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import FooterCom from '../components/FooterCom';
+import FooterCom from '../components/footerCom';
 import { getName} from '../ducks/searchDk';
 
 

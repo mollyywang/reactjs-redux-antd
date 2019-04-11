@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import produlistCom from '../components/ProductlistCom';
+import produlistCom from '../components/productlistCom';
 import { getItems, getIndexx,productsGet,getCounts,getAllNums,getFetching } from '../ducks/productlistDk';
 import { getName } from '../ducks/searchDk';
 

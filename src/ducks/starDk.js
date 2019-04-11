@@ -35,7 +35,7 @@ function handleStarRemove(state, payload) {
     };
 }
 
-function handleStarGet(state, payload) {
+function handleStarGet(state, payload) {////
     return {
         ...state
     };

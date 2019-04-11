@@ -5,16 +5,15 @@ import Product from '../connectors/ProductCon';
 
 class Star extends Component {
     constructor() {
-        super();
-        //服务器拉取数据写在哪里
-        
-       
+        super();  
     }
+
     componentDidMount() {
         console.log('5、父组件挂载完成');
         const {starGet} = this.props;
         starGet();
     }
+    
     render(){
         const {items} = this.props;
         return (

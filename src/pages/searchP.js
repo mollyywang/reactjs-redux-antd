@@ -15,9 +15,9 @@ class Search extends Component {
  render(){
    return(
     <div className='flex-layout search-wrap'>
-      <header><h2>Price Comparison<Link to={{pathname:"/about"}} ><i className='btn-mine'/></Link></h2></header>
+      <header><h2>Price Comparison<Link to={{pathname:"/user"}} ><i className='btn-mine'/></Link></h2></header>
       <section className='flex-main'>  
-        <SearchCon/>
+        <SearchCon hash={this.props.location.hash}/>
         <ProductlistCon/>
       </section>
       <FooterCon url={this.props.location}/>

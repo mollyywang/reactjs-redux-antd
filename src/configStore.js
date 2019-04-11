@@ -4,6 +4,7 @@ import thunk from 'redux-thunk'
 import {createBrowserHistory} from 'history';
 import starReducer from './ducks/starDk';
 import searchReducer from './ducks/searchDk';
+import userReducer from './ducks/userDK';
 import listReducer from './ducks/productlistDk';
 
 
@@ -16,6 +17,7 @@ const middleware = [thunk, routerMiddleware(history)]
 const rootReducer = combineReducers({
   router: connectRouter(history),
   star: starReducer,
+  user:userReducer,
   search: searchReducer,
   productlists:listReducer
 })

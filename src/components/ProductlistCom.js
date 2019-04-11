@@ -17,7 +17,11 @@ class ProductList extends Component{
 
     handleScroll = (dom)=>{
         const {productsGet,name,indexx,counts,allNums,isFetching} = this.props;
-        console.log();
+        console.log(dom.scrollHeight-dom.scrollTop-dom.offsetHeight);
+        if(!name||name==""){
+            console.log(name);
+            return false;
+        }
         //翻页 loading
         if(dom.scrollHeight-dom.scrollTop-dom.offsetHeight<100){
             if(indexx>=allNums){
@@ -33,8 +37,7 @@ class ProductList extends Component{
 
     componentDidMount  = ()=>{
         //获取items
-        const {productsGet,name} = this.props;
-        productsGet(name);
+
         //监听下拉加载
         const pro = this.refs.productlist;
         let fn = debounce(this.handleScroll,100,pro);

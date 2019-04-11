@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import StarCom from '../components/StarCom';
+import StarCom from '../components/starCom';
 import { getItems, removeFromStar,starGet } from '../ducks/starDk';
 
 const mapStateToProps = (state, props) => {

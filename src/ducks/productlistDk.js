@@ -50,6 +50,9 @@ function handleProductsIng(state){
 export const productsGet = (name) => {
     return async (dispatch, getState) => {
         const state = getState()
+        if(!!state.productlists.isFetching){
+            return false;
+        }
         dispatch(fetchIng())
         setTimeout(async ()=>{
             try{
@@ -63,7 +66,6 @@ export const productsGet = (name) => {
                 dispatch(fetchError(e))
             }
         },2000)
-        
     };
 };
 

@@ -14,7 +14,7 @@ class Star extends Component {
   render(){
     return(
       <div className='flex-layout star-wrap'>
-        <header><h2>Price Comparison<Link to={{pathname:"/about"}}><i className='btn-mine'/></Link></h2></header>
+        <header><h2>Price Comparison<Link to={{pathname:"/user"}}><i className='btn-mine'/></Link></h2></header>
         <section className='flex-main'>
         <StarCon/>
         </section>

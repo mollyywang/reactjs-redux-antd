@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ProductCom from '../components/ProductCom';
+import ProductCom from '../components/productCom';
 import { addToStar, removeFromStar, isInStar } from '../ducks/starDk';
 
 const mapStateToProps = (state, props) => {

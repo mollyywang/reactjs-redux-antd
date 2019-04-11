@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router'
 
 import searchP from './pages/searchP'
 import starP from './pages/starP'
-import aboutP from './pages/aboutP'
+import userP from './pages/userP'
 
 
 
@@ -17,7 +17,7 @@ class App extends Component {
     <div className="App">
       <Switch>
         <Route exact path="/" component={searchP} />
-        <Route exact path="/about" component={aboutP} />
+        <Route exact path="/user" component={userP} />
         <Route exact path="/star" component={starP} />
         <Route exact path="/search" component={searchP} />
         <Route exact path="/search/:key" component={searchP} />
