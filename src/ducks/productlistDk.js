@@ -47,18 +47,14 @@ function handleProductsIng(state){
     }
 }
 
-export const productsGet = (name) => {
-    return async (dispatch, getState) => {
-        const state = getState()
-        if(!!state.productlists.isFetching){
-            return false;
-        }
+export const productsGet = (name,indexx,counts) => {
+    return async (dispatch) => {
         dispatch(fetchIng())
         setTimeout(async ()=>{
             try{
                 const res = await axios.post('http://127.0.0.1:1234/api/p/products', {
-                    "indexx":state.productlists.indexx,
-                    "counts":state.productlists.counts,
+                    "indexx":indexx,
+                    "counts":counts,
                     "name":name
                 })
                 dispatch(fetchSuccess(res.data))
@@ -66,6 +62,7 @@ export const productsGet = (name) => {
                 dispatch(fetchError(e))
             }
         },2000)
+        
     };
 };
 
