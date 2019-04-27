@@ -27,7 +27,8 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    url: PropTypes.object.isRequired
 }
 
 export default Footer;

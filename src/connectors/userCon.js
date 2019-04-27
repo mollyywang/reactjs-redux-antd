@@ -1,20 +1,22 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import UserCom from '../components/userCom';
-import { getName, changeName,userDoLogin,getLogining} from '../ducks/userDK';
+import { getName,getToken,getLogining,changeName,userDoLogin} from '../ducks/userDK';
 import {Form} from 'antd';
 
 const mapStateToProps = (state, props) => {
     return {
-        name:getName(state),
-        logining:getLogining(state)
+        username:getName(state),
+        logining:getLogining(state),
+        token:getToken(state)
     }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    changeName: (name) => dispatch(changeName(name)),
+    changeName: (username) => dispatch(changeName(username)),
     userDoLogin: (name,password) => dispatch(userDoLogin(name,password))
 })
 
 const loginForm = Form.create({ name: 'normal_login' })(UserCom);
 
-export default connect(mapStateToProps, mapDispatchToProps)(loginForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(loginForm));

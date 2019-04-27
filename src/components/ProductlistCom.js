@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import PropTypes from 'prop-types';
 import ProductCon from '../connectors/ProductCon';
 import {debounce} from '../util/uiUtil'
-import { Spin, Divider } from 'antd';
+import { Spin } from 'antd';
 
 import '../styles/product.less'
 
@@ -16,28 +16,27 @@ class ProductList extends Component{
     }
 
     handleScroll = (dom)=>{
-        const {productsGet,name,indexx,counts,allNums,isFetching} = this.props;
-        console.log(dom.scrollHeight-dom.scrollTop-dom.offsetHeight);
+        const {productsGet,name,index,allNums,isFetching} = this.props;
         if(!name||name==""){
             console.log(name);
             return false;
         }
+
         //翻页 loading
         if(dom.scrollHeight-dom.scrollTop-dom.offsetHeight<100){
-            if(indexx>=allNums){
-                console.log('end')
+            if(index>=allNums){
+                console.log('fetching end')
             }else{
                 if(!!isFetching){
                     return false;
                 }
-                productsGet(name,indexx,counts);
+                productsGet(name);
+                return dom.scrollTop = dom.scrollHeight
             }
         }
     }
 
     componentDidMount  = ()=>{
-        //获取items
-
         //监听下拉加载
         const pro = this.refs.productlist;
         let fn = debounce(this.handleScroll,100,pro);
@@ -65,12 +64,12 @@ class ProductList extends Component{
 }
 
 ProductList.propTypes = {
-    isFetching:PropTypes.bool,
+    isFetching:PropTypes.bool.isRequired,
     name:PropTypes.string,
-    items: PropTypes.array,
-    productsGet: PropTypes.func,
+    items: PropTypes.array.isRequired,
+    productsGet: PropTypes.func.isRequired,
     allNums: PropTypes.number,
-    indexx:PropTypes.number,
+    index:PropTypes.number,
     counts:PropTypes.number
 }
 

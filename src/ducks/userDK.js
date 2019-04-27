@@ -1,9 +1,11 @@
+import axios from 'axios';
 
 // actions
 
 const initialState = {
-    name: '' ,
-    getLogining:false
+    username: '' ,
+    token: '',
+    logining:false
 };
 
 // reducer
@@ -25,15 +27,15 @@ export default function user(state = initialState, action = {}) {
 function handleChangeName(state = initialState, payload) {
     return {
         ...state,
-        name:payload.name
+        username:payload.username
     };
 }
 function handleLoginSuccess(state, payload){
-    console.log('登陆成功')
-    console.log('payload')
     return {
         ...state,
-        getLogining:false,
+        username:payload.data.username,
+        token:payload.data.token,
+        logining:false,
     }
 }
 
@@ -47,28 +49,30 @@ function handleLoginError(state, payload){
 function handleLoginIng(state){
     return {
         ...state,
-        isLoginIng:true
+        logining:true
     }
 }
 
-export const userDoLogin = (name,password) => {
-    console.log(name);
-    console.log(password);///
-    // return async (dispatch, getState) => {
-    //     const state = getState()
-    //     dispatch(loginIng())
-    //     setTimeout(async ()=>{
-    //         try{
-    //             const res = await axios.post('', {
-    //                 "name":name,
-    //                 "password":password,
-    //             })
-    //             dispatch(loginSuccess(res.data))
-    //         } catch (e){
-    //             dispatch(loginError(e))
-    //         }
-    //     },2000)
-    // };
+export const userDoLogin = (username,password) => {
+    return async (dispatch, getState) => {
+        dispatch(loginIng())
+        setTimeout(async ()=>{
+            try{
+                const res = await axios.post('http://127.0.0.1:5001/public/user/login', {
+                    "username":username,
+                    "password":password,
+                })
+                console.log(res.data);
+                if(res.data.code==0){
+                    return dispatch(loginSuccess(res.data))
+                }else{
+                    return dispatch(loginError(res.data))
+                }
+            }catch(e){
+                dispatch(loginError(e))
+            }
+        },2000)
+    };
 };
 
 
@@ -86,14 +90,12 @@ export function loginIng() {
 export function loginSuccess(data) {
     return {
         type: 'LOGIN/SUCCESS',
-        payload: {
-            data:data,
-        }
+        payload: data
     }
 }
 
 // action creators
-export function fetchError(error) {
+export function loginError(error) {
     return {
         type: 'LOGIN/ERROR',
         payload: {
@@ -105,21 +107,25 @@ export function fetchError(error) {
 
 
 // action creators
-export function changeName(name) {
+export function changeName(username) {
     return {
         type:  'CHANGE/NAME',
         payload: {
-            name
+            username
         }
     }
 }
 
 // selectors
 export function getName(state, props) {
-    return state.user.name;
+    return state.user.username;
+}
+
+export function getToken(state, props) {
+    return state.user.token;
 }
 
 export function getLogining(state) {
-    return state.user.getLogining;
+    return state.user.logining;
 }
 

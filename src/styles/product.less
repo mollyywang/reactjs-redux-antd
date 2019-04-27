@@ -1,11 +1,13 @@
+@import url('common.import.less');
+
 // productlist
 ul.productlist{
     text-align: center;
     list-style: none;padding: 12px 0 0 0;width: 100%;color:#292422;
     -webkit-overflow-scrolling: touch;
-  -webkit-box-flex: 1;flex: 1;
-  overflow-y: scroll;margin-bottom: 0;
-  position: relative;height:100%;
+    -webkit-box-flex: 1;flex: 1;
+    overflow-y: scroll;margin-bottom: 0;
+    position: relative;
     li{width: 100%;margin-top:8px;
         border-radius: 4px;overflow: hidden;
     text-align: left;        
@@ -26,7 +28,7 @@ ul.productlist::-webkit-scrollbar { width: 0 !important }
     -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
-    padding:0 12px 0 0 ;
+    padding:0 ;
     background-color: #fff;
     .tag{top: 0;border-bottom-left-radius: 2px;border-bottom-right-radius: 2px;
         left: 90px;position: absolute;z-index: 10;width: 55px;height: 20px;background-size: 100% 100%;}
@@ -36,7 +38,9 @@ ul.productlist::-webkit-scrollbar { width: 0 !important }
     .tag.amazon{background-image:url(icon/logo-amazon@2x.jpg)}
     .tag.kmart{background-image:url(icon/logo-kmart@2x.jpg)}
     .tag.target{background-image:url(icon/logo-target@2x.jpg)}
-    .pic{background-position: center;background-color: #ccc; background-size: cover;width: 80px;height: 80px;display: inline-block;}
+    .pic{
+        .bg-pic();
+        .size(80px,80px)}
     .detail{
         margin-top: 18px;
         display: block;position: relative;

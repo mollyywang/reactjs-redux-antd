@@ -1,10 +1,9 @@
 import axios from 'axios';
 
-
 const initialState = {
     items: [],// array of product
     counts:16,
-    indexx:0,
+    index:0,
     allNums:0,
     isFetching: false,
 };
@@ -18,6 +17,8 @@ export default function productlists(state = initialState,action={}) {
             return handleProductsError(state, action.payload)
         case 'PRODUCTS/FETCH_ING':
             return handleProductsIng(state)
+        case 'INDEX/RESET':
+            return handleIndexReset(state)
         default:
             return state;
     }
@@ -26,10 +27,20 @@ export default function productlists(state = initialState,action={}) {
 function handleProductsSuccess(state, payload){
     return {
         ...state,
-        indexx:state.indexx+state.counts,
+        index:state.index+state.counts,
         isFetching:false,
-        allNums:payload.data.data.allNums,
-        items:state.items.concat(payload.data.data.data),
+        allNums:payload.allNums,
+        items:state.items.concat(payload.productData),
+    }
+}
+
+function handleIndexReset(state){
+    return {
+        ...state,
+        index:0,
+        isFetching:false,
+        allNums:0,
+        items:[],
     }
 }
 
@@ -47,17 +58,19 @@ function handleProductsIng(state){
     }
 }
 
-export const productsGet = (name,indexx,counts) => {
-    return async (dispatch) => {
+export const productsGet = (name) => {
+    return async (dispatch,getState) => {
         dispatch(fetchIng())
+        const state = getState().productlist
+        console.log('getting product,from index:'+state.index)
         setTimeout(async ()=>{
             try{
-                const res = await axios.post('http://127.0.0.1:1234/api/p/products', {
-                    "indexx":indexx,
-                    "counts":counts,
-                    "name":name
+                const res = await axios.post('http://127.0.0.1:5001/public/products/getlist', {
+                    "name":name,
+                    "index":state.index,
+                    "counts":state.counts
                 })
-                dispatch(fetchSuccess(res.data))
+                dispatch(fetchSuccess(res.data.data))
             } catch (e){
                 dispatch(fetchError(e))
             }
@@ -81,13 +94,10 @@ export function fetchIng() {
 export function fetchSuccess(data) {
     return {
         type: 'PRODUCTS/FETCH_SUCCESS',
-        payload: {
-            data:data,
-        }
+        payload: data
     }
 }
 
-// action creators
 export function fetchError(error) {
     return {
         type: 'PRODUCTS/FETCH_ERROR',
@@ -97,22 +107,27 @@ export function fetchError(error) {
     }
 }
 
+export function resetIndex(){
+    return {
+        type: 'INDEX/RESET'
+    }
+}
 
 export function getItems(state) {
-    return state.productlists.items;
+    return state.productlist.items;
 }
 export function getAllNums(state) {
-    return state.productlists.allNums;
+    return state.productlist.allNums;
 }
 export function getCounts(state) {
-    return state.productlists.counts;
+    return state.productlist.counts;
 }
-export function getIndexx(state) {
-    return state.productlists.indexx;
+export function getIndex(state) {
+    return state.productlist.index;
 }
 export function getFetching(state) {
-    return state.productlists.isFetching;
+    return state.productlist.isFetching;
 }
 export function getProduct(state, props) {
-    return state.productlists.find(item => item.id === props.id);
+    return state.productlist.find(item => item.id === props.id);
 }

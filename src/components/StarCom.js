@@ -4,8 +4,13 @@ import Product from '../connectors/ProductCon';
 
 
 class Star extends Component {
-    constructor() {
-        super();  
+    constructor(props) {
+        super(props);  
+    }
+
+    static defaultProps = {
+        items: [],/////把这个去掉
+        itemIds: []
     }
 
     componentDidMount() {

@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
   star: starReducer,
   user:userReducer,
   search: searchReducer,
-  productlists:listReducer
+  productlist:listReducer
 })
 
 const enhancers = []

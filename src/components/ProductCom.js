@@ -6,8 +6,8 @@ import { Popconfirm } from 'antd';
 
 
 class Product extends Component{
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
     }
 
     handleStarClick = () => {
@@ -51,8 +51,7 @@ class Product extends Component{
     render (){
         const { name, price, image,urllink,from, isInStar,typeS} = this.props;
         return(
-            
-            <div className="product-con">
+            <div className="product-con"  data={urllink}>
                 <div className={'tag '+from}></div>
                 <b style={{backgroundImage:'url('+image+')'}} alt="product" className="pic"/>
                 <div className="detail">
@@ -66,15 +65,15 @@ class Product extends Component{
 }
 
 Product.propTypes = {
-    _id: PropTypes.string,
-    name: PropTypes.string,
-    price: PropTypes.number,
-    image: PropTypes.string,
-    url:PropTypes.string,
-    from:PropTypes.string,
-    isInStar: PropTypes.bool,
-    removeFromStar: PropTypes.func,
-    addToStar: PropTypes.func,
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    urllink:PropTypes.string,
+    from:PropTypes.string.isRequired,
+    isInStar: PropTypes.bool.isRequired,
+    removeFromStar: PropTypes.func.isRequired,
+    addToStar: PropTypes.func.isRequired,
 }
 
 export default Product;

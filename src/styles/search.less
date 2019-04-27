@@ -1,20 +1,26 @@
+@import url('common.import.less');
+
 .search-wrap{
-    .search-con.up{transform: translateY(0);}
-    .search-con{
+    .search-form.up{transform: translateY(0);}
+    .search-form{
         transform: translateY(150px);
         z-index: 99;
         transition: all .5s;
-        padding-bottom: 10px;
+        padding-bottom: 0;
         position: relative;
-        .search-in{width: calc(100% - 80px);}
-        .btn-search{width: 70px;float: right;height:32px;
-            a{color:#fff;}
+        .search-in{margin-bottom: 0;}
+        .search-button{
+            margin-bottom: 8px;
+            span{color: #222;padding-left: 4px;}
+        }
+        .btn-search{
+            float: right;
+            span{    
+                color: #fff;padding-left: 0;
+            }
         }
     }
-    .search-detail{margin-bottom: 0;padding-top: 10px;
-        span{color: #fd403e;font-weight: bold;}
-    }
-    .search-con::after{
+    .search-form::after{
         content: "";
         position: absolute;
         width: 100%;

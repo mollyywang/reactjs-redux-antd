@@ -1,11 +1,10 @@
 import React,{ Component } from 'react'
-import UserCon from '../connectors/userCon'
+import MeCon from '../connectors/meCon'
 import FooterCon from '../connectors/footerCon'
 
 import '../styles/user.less'
 
-
-class User extends Component {
+class Me extends Component {
 
   constructor(props) {
     super(props);
@@ -20,11 +19,11 @@ class User extends Component {
       <div className='flex-layout user-wrap'>
         <header><h2>Price Comparison<i className='btn-mine cur'/></h2></header>
         <section className='flex-main'>
-            <UserCon/>
+            <MeCon/>
         </section>
         <FooterCon url={this.props.location}/>
       </div>
     )
   }
 }
-export default User
+export default Me

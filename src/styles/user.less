@@ -1,3 +1,5 @@
+@import url('common.import.less');
+
 .user-wrap{
     .login-form{
         margin-top: 24px;
@@ -6,5 +8,23 @@
             width: 100%;
         }
     }
-    
+    .user-detail{
+        padding-top: 24px;
+        .user-pic{
+            .size(60px,60px);
+            .bg-pic();
+            border-radius: 100%;
+            border: @primary-color 1px solid;
+        }
+        h1{
+            i{
+                margin-right: 5px;
+            }
+            font-size: 20px;
+            color:#292422;
+            font-family: DIN;
+
+        }
+        text-align: center
+    }
 }
