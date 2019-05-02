@@ -1,16 +1,36 @@
+# A shopping application developped with reactjs, redux-thunk, axios and antd
+
 This project was developed with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+That is a another version of this example but developped with redux-saga. See more info ()
 
-In the project directory, you can run:
+## 1. Setting up. 项目开始。
 
-### `npm start`
+Clone this repo and adjust details in `package.json`. Remove the `.git` directory and `git init` to start fresh.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+克隆这个仓库，调整适合自己项目的`package.json`，移除`.git`文件并使用`git init`来初始化。
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```bash
+git clone https://github.com/SoloistWang/reactjs-redux-antd.git
+```
+
+## 2. Config package.json. 包配置。
+- [`antd`] Hash passwords. 加密密码。
+- [`axios`] An implementation of JSON Web Tokens. 实现JSON Web令牌。
+- [`babel-plugin-import`] Authenticate HTTP requests. 验证HTTP请求。
+- [`connected-react-router`]  Declarative routing. 声明路由。
+- [`customize-cra`] Putting a soft cushion between you all the cool new file formats being developed for node.js such as CoffeeScript, SASS, and Jade. 提供一个环境，任何 JavaScript 代码都可以向下编译成可以在今天随处可用的版本。
+- [`less`] Parse request bodies. 解析请求主体。
+- [`react-app-rewired`] Code formatting. 代码格式化。
+- [`redux`] Enable cross-domain requests. 配置跨域请求。
+- [`react-router`] Auto-restart when your files change. 文件改动时自动重启进程。
+
+run `npm install` to install the dependencies
+运行 `npm install` 来加载依赖包
+
+```bash
+npm install
+```
 
 ### `npm test`
 
