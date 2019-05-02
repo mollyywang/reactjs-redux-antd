@@ -8,29 +8,29 @@ class Search extends Component {
     }
 
     static defaultProps = {
-        name:'',
-        inputVal:''
+        name: '',
+        inputVal: ''
     }
-    
+
     static contextTypes = {
         router: PropTypes.object.isRequired,
     }
 
-    searchDetail=''
-    
-    componentDidUpdate = ()=>{
+    searchDetail = ''
+
+    componentDidUpdate = () => {
         //if users update the url,do search 用户手动更新url链接上的搜索名，执行搜索操作
-        const { hash,name,changeName,productsGet } = this.props; 
-        if(name!==""&&name!==hash.substr(1)){
+        const { hash, name, changeName, productsGet } = this.props;
+        if (name !== "" && name !== hash.substr(1)) {
             changeName(hash.substr(1));
             productsGet(hash.substr(1));
         }
     }
 
-    componentDidMount  = ()=>{
+    componentDidMount = () => {
         //do search when opening page first time 第一次打开页面url上面有搜索参数，执行搜索操作
-        const { hash,changeName,productsGet } = this.props; 
-        if(hash!==''){
+        const { hash, changeName, productsGet } = this.props;
+        if (hash !== '') {
             changeName(hash.substr(1));
             productsGet(hash.substr(1));
         }
@@ -38,22 +38,22 @@ class Search extends Component {
 
     handleSubmit = (e) => {
         //do search whenever click the button 点击一次按钮，执行一次搜索
-        const { name,changeName,productsGet } = this.props; 
+        const { name, changeName, productsGet } = this.props;
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
-            if (!err&&(name!=values.name)) {
+            if (!err && (name != values.name)) {
                 changeName(values.name);
                 productsGet(values.name);
-                this.context.router.history.push('/search#'+values.name)
+                this.context.router.history.push('/search#' + values.name)
             }
         });
     }
 
-    render (){
-        const { getFieldDecorator,name } = this.props.form;
+    render() {
+        const { getFieldDecorator, name } = this.props.form;
         return (
-            <div className={name==""?"search-form":"search-form up"}>
-            <Form onSubmit={this.handleSubmit}>
+            <div className={name == "" ? "search-form" : "search-form up"}>
+                <Form onSubmit={this.handleSubmit}>
                     <Form.Item className="search-in">
                         {getFieldDecorator('name', {
                             rules: [{ required: true, message: 'Please input your product name!' }],
@@ -67,31 +67,33 @@ class Search extends Component {
                             Search
                         </Button>
                     </Form.Item>
-            </Form>
+                </Form>
             </div>)
-        }
+    }
 }
 
-Search.propTypes = { 
+Search.propTypes = {
     name: PropTypes.string,
     inputVal: PropTypes.string,
-    searching:PropTypes.bool.isRequired,
+    searching: PropTypes.bool.isRequired,
     changeName: PropTypes.func.isRequired,
-    productsGet:PropTypes.func.isRequired
+    productsGet: PropTypes.func.isRequired
 }
 
 const SearchForm = Form.create(
-    { name: 'normal_login',
-    //keep the value in the input area the same as the url's hash 保持输入框里面的值跟url链接上的参数一致
-    mapPropsToFields(props) {
-        return {
-          name: Form.createFormField({
-            ...props.name,
-            value: props.name,
-          }),
-        };
-      }}
-    
-    )(Search);
+    {
+        name: 'normal_login',
+        //keep the value in the input area the same as the url's hash 保持输入框里面的值跟url链接上的参数一致
+        mapPropsToFields(props) {
+            return {
+                name: Form.createFormField({
+                    ...props.name,
+                    value: props.name,
+                }),
+            };
+        }
+    }
+
+)(Search);
 
 export default SearchForm;

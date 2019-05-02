@@ -39,7 +39,7 @@ function handleStarsSuccess(state, payload) {
     return {
         ...state,
         isFetching: false,
-        items: payload.starsData,
+        items: payload.starsData.length == 0 ? state.items : payload.starsData,
     }
 }
 

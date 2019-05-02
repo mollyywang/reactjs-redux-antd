@@ -16,8 +16,7 @@ class Product extends Component {
 
     handleStarClick = () => {
         const { _id, name, price, image, urllink, from, isInStar, removeFromStar, addToStar } = this.props
-        // if (!isLogin) { return this.context.router.history.push('/user/login') }
-        isInStar ? removeFromStar(_id) : addToStar({_id: _id,name: name,price: price,image: image,urllink: urllink,from: from})
+        isInStar ? removeFromStar(_id) : addToStar({ _id: _id, name: name, price: price, image: image, urllink: urllink, from: from })
     }
     confirm = () => {
         this.handleStarClick();

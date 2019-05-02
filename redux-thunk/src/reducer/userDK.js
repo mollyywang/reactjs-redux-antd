@@ -1,16 +1,16 @@
 
 const initialState = {
-    username: '' ,
+    username: '',
     token: '',
-    logining:false
+    logining: false
 };
 
 // reducer
 export default function user(state = initialState, action = {}) {
     switch (action.type) {
-        case  'USER/LOGOUT':
+        case 'USER/LOGOUT':
             return handleLogout(state, action.payload)
-        case  'CHANGE/NAME':
+        case 'CHANGE/NAME':
             return handleChangeName(state, action.payload)
         case 'LOGIN/SUCCESS':
             return handleLoginSuccess(state, action.payload)
@@ -23,38 +23,38 @@ export default function user(state = initialState, action = {}) {
     }
 }
 
-function handleLogout(state, payload){
+function handleLogout(state, payload) {
     return {
         ...state,
-        username:'',
-        token:''
+        username: '',
+        token: ''
     };
 }
 function handleChangeName(state, payload) {
     return {
         ...state,
-        username:payload.username
+        username: payload.username
     };
 }
-function handleLoginSuccess(state, payload){
+function handleLoginSuccess(state, payload) {
     return {
         ...state,
-        username:payload.data.username,
-        token:payload.data.token,
-        logining:false,
+        username: payload.data.username,
+        token: payload.data.token,
+        logining: false,
     }
 }
 
-function handleLoginError(state, payload){
+function handleLoginError(state, payload) {
     console.error(payload)
     return {
         ...state
     }
 }
 
-function handleLoginIng(state){
+function handleLoginIng(state) {
     return {
         ...state,
-        logining:true
+        logining: true
     }
 }

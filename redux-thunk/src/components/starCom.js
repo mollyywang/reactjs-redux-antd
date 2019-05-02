@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Product from '../connectors/ProductCon';
+import Product from '../connectors/productCon';
 import { Spin, Button } from 'antd';
 import { Link } from 'react-router-dom'
 
+/**
+ * STAR Component
+ * like the shopping cart
+ * starlist fetch the data from the server，but addtostar and removestar use local api
+ */
+
 class Star extends Component {
     constructor(props) {
-        super(props);  
+        super(props);
     }
 
     static defaultProps = {
@@ -19,33 +25,32 @@ class Star extends Component {
 
     componentDidUpdate = () => {
         const { isLogin } = this.props;
-        if(!isLogin){
+        if (!isLogin) {
             this.context.router.history.push('/user/login')
         }
     }
 
     componentDidMount() {
-        const { starGet,isLogin } = this.props;
-        if(isLogin){
+        const { starGet, isLogin } = this.props;
+        if (isLogin) {
             starGet();
-            // this.context.router.history.push('/user/login')
         }
-        
+
     }
-    
-    render(){
+
+    render() {
         const { isLogin, items, isFetching } = this.props;
         return (
             <div className="star-con">
                 {items.length === 0 && (
                     <h2 className="alert-info">Star List is empty</h2>
                 )}
-                {isLogin ? "" : <Link to={{pathname:"/user/login"}} ><Button type="primary">login to get your starlist</Button></Link>}
-                <Spin size="large" spinning={isFetching}/>
+                {isLogin ? "" : <Link to={{ pathname: "/user/login" }} ><Button type="primary">login to get your starlist</Button></Link>}
+                <Spin size="large" spinning={isFetching} />
                 <ul className="starlist-item">
                     {items.length > 0 && items.map(product => (
                         <li key={product._id} className="starlist-item">
-                            <Product {...product} typeS="delete"/>
+                            <Product {...product} typeS="delete" />
                         </li>
                     ))}
                 </ul>

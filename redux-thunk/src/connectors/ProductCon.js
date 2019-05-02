@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 
 const mapStateToProps = (state, props) => {
     return {
-        isLogin:getIsLogin(state),
+        isLogin: getIsLogin(state),
         isInStar: isInStar(state, props)
     }
 }

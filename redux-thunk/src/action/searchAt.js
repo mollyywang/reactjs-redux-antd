@@ -2,7 +2,7 @@
 // action creators
 export function changeName(name) {
     return {
-        type:  'NAME/CHANGE',
+        type: 'NAME/CHANGE',
         payload: {
             name
         }
@@ -11,7 +11,7 @@ export function changeName(name) {
 
 export function changeSearching(searching) {
     return {
-        type:  'SERCHING/CHANGE',
+        type: 'SERCHING/CHANGE',
         payload: {
             searching
         }

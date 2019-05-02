@@ -1,4 +1,4 @@
-import React,{ Component } from 'react'
+import React, { Component } from 'react'
 import UserCon from '../connectors/userCon'
 import FooterCon from '../connectors/footerCon'
 import { Link } from 'react-router-dom'
@@ -12,18 +12,18 @@ class User extends Component {
     super(props);
   }
 
-  componentDidMount=()=>{
-    
+  componentDidMount = () => {
+
   }
-  
-  render(){
-    return(
-      <div className='flex-layout user-wrap'>
-        <header><h2>Price Comparison<Link to={{pathname:"/user/me"}}><i className='btn-mine cur'/></Link></h2></header>
-        <section className='flex-main'>
-            <UserCon/>
+
+  render() {
+    return (
+      <div className='user-wrap'>
+        <header><h2>Price Comparison<Link to={{ pathname: "/user/me" }}><i className='btn-mine cur' /></Link></h2></header>
+        <section className='user-main'>
+          <UserCon />
         </section>
-        <FooterCon url={this.props.location}/>
+        <FooterCon url={this.props.location} />
       </div>
     )
   }

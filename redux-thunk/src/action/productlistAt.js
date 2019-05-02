@@ -1,23 +1,23 @@
 import axios from 'axios';
 
 export const productsGet = (name) => {
-    return async (dispatch,getState) => {
+    return async (dispatch, getState) => {
         dispatch(fetchIng())
         const state = getState().productlist
-        console.log('getting product,from index:'+state.index)
-        setTimeout(async ()=>{
-            try{
+        console.log('getting product,from index:' + state.index)
+        setTimeout(async () => {
+            try {
                 const res = await axios.post('http://127.0.0.1:5001/public/products/getlist', {
-                    "name":name,
-                    "index":state.index,
-                    "counts":state.counts
+                    "name": name,
+                    "index": state.index,
+                    "counts": state.counts
                 })
                 dispatch(fetchSuccess(res.data.data))
-            } catch (e){
+            } catch (e) {
                 dispatch(fetchError(e))
             }
-        },2000)
-        
+        }, 2000)
+
     };
 };
 
@@ -41,12 +41,12 @@ export function fetchError(error) {
     return {
         type: 'PRODUCTS/FETCH_ERROR',
         payload: {
-            error:error,
+            error: error,
         }
     }
 }
 
-export function resetIndex(){
+export function resetIndex() {
     return {
         type: 'INDEX/RESET'
     }

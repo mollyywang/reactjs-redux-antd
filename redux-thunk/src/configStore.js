@@ -1,7 +1,7 @@
-import { combineReducers,createStore, applyMiddleware, compose } from 'redux'
-import { routerMiddleware,connectRouter } from 'connected-react-router'
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
+import { routerMiddleware, connectRouter } from 'connected-react-router'
 import thunk from 'redux-thunk'
-import {createBrowserHistory} from 'history';
+import { createBrowserHistory } from 'history';
 import starReducer from './reducer/starDk';
 import searchReducer from './reducer/searchDk';
 import userReducer from './reducer/userDK';
@@ -17,9 +17,9 @@ const middleware = [thunk, routerMiddleware(history)]
 const rootReducer = combineReducers({
   router: connectRouter(history),
   star: starReducer,
-  user:userReducer,
+  user: userReducer,
   search: searchReducer,
-  productlist:listReducer
+  productlist: listReducer
 })
 
 const enhancers = []
@@ -32,8 +32,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const composedEnhancers = compose(
-    applyMiddleware(...middleware),
-    ...enhancers
+  applyMiddleware(...middleware),
+  ...enhancers
 )
 
 export default function configureStore(initialState) {

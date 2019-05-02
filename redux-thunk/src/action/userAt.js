@@ -1,24 +1,24 @@
 import axios from 'axios';
 
-export const userDoLogin = (username,password) => {
+export const userDoLogin = (username, password) => {
     return async (dispatch, getState) => {
         dispatch(loginIng())
-        setTimeout(async ()=>{
-            try{
+        setTimeout(async () => {
+            try {
                 const res = await axios.post('http://127.0.0.1:5001/public/user/login', {
-                    "username":username,
-                    "password":password,
+                    "username": username,
+                    "password": password,
                 })
                 console.log(res.data);
-                if(res.data.code==0){
+                if (res.data.code == 0) {
                     return dispatch(loginSuccess(res.data))
-                }else{
+                } else {
                     return dispatch(loginError(res.data))
                 }
-            }catch(e){
+            } catch (e) {
                 dispatch(loginError(e))
             }
-        },2000)
+        }, 2000)
     };
 };
 
@@ -50,14 +50,14 @@ export function loginError(error) {
     return {
         type: 'LOGIN/ERROR',
         payload: {
-            error:error,
+            error: error,
         }
     }
 }
 
 export function changeName(username) {
     return {
-        type:  'CHANGE/NAME',
+        type: 'CHANGE/NAME',
         payload: {
             username
         }
@@ -74,6 +74,6 @@ export function getToken(state, props) {
 export function getLogining(state) {
     return state.user.logining;
 }
-export function getIsLogin(state){
-    return state.user.username&&state.user.token ? true : false
+export function getIsLogin(state) {
+    return state.user.username && state.user.token ? true : false
 }

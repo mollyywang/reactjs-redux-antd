@@ -1,13 +1,13 @@
 
 const initialState = {
     items: [],
-    counts:16,
-    index:0,
-    allNums:0,
+    counts: 16,
+    index: 0,
+    allNums: 0,
     isFetching: false,
 };
 // reducer
-export default function productlists(state = initialState,action={}) {
+export default function productlists(state = initialState, action = {}) {
     switch (action.type) {
         case 'PRODUCTS/FETCH_SUCCESS':
             return handleProductsSuccess(state, action.payload)
@@ -22,36 +22,36 @@ export default function productlists(state = initialState,action={}) {
     }
 }
 
-function handleIndexReset(state){
+function handleIndexReset(state) {
     return {
         ...state,
-        index:0,
-        isFetching:false,
-        allNums:0,
-        items:[],
+        index: 0,
+        isFetching: false,
+        allNums: 0,
+        items: [],
     }
 }
 
-function handleProductsSuccess(state, payload){
+function handleProductsSuccess(state, payload) {
     return {
         ...state,
-        index:state.index+state.counts,
-        isFetching:false,
-        allNums:payload.allNums,
-        items:state.items.concat(payload.productData),
+        index: state.index + state.counts,
+        isFetching: false,
+        allNums: payload.allNums,
+        items: state.items.concat(payload.productData),
     }
 }
 
-function handleProductsError(state, payload){
+function handleProductsError(state, payload) {
     console.error(payload)
     return {
         ...state
     }
 }
 
-function handleProductsIng(state){
+function handleProductsIng(state) {
     return {
         ...state,
-        isFetching:true
+        isFetching: true
     }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Icon} from 'antd';
+import { Button, Icon } from 'antd';
 import { Link } from 'react-router-dom'
 
 
@@ -20,14 +20,14 @@ class Me extends Component {
 
     componentDidUpdate = () => {
         const { isLogin } = this.props;
-        if(!isLogin){
+        if (!isLogin) {
             this.context.router.history.push('/user/login')
         }
     }
 
-    componentDidMount  = ()=>{
+    componentDidMount = () => {
         const { isLogin } = this.props;
-        if(!isLogin){
+        if (!isLogin) {
             this.context.router.history.push('/user/login')
         }
     }
@@ -36,18 +36,18 @@ class Me extends Component {
         const { username } = this.props;
         return (
             <div className="user-detail">
-                <b className="user-pic" style={{backgroundImage:'url(../../images/avatar.png)'}} ></b>
+                <b className="user-pic" style={{ backgroundImage: 'url(../../images/avatar.png)' }} ></b>
                 <h1><Icon type="user" />{username}</h1>
-                <p><Link to={{pathname:"/search"}} ><Button type="primary">click to search</Button></Link></p>
-                <p><Link to={{pathname:"/star"}} ><Button type="primary">see your starlist</Button></Link></p>
-                <p><Link to={{pathname:"/user/login"}} ><Button>logout</Button></Link></p>
+                <p><Link to={{ pathname: "/search" }} ><Button type="primary">click to search</Button></Link></p>
+                <p><Link to={{ pathname: "/star" }} ><Button type="primary">see your starlist</Button></Link></p>
+                <p><Link to={{ pathname: "/user/login" }} ><Button>logout</Button></Link></p>
             </div>
         )
     }
 }
 
 Me.propTypes = {
-    isLogin:PropTypes.bool.isRequired,
+    isLogin: PropTypes.bool.isRequired,
     username: PropTypes.string,
     token: PropTypes.string,
 }
