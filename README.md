@@ -1,4 +1,4 @@
-# A shopping application developped with reactjs, redux-thunk, axios and antd
+# A shopping web application developped with reactjs, redux-thunk, axios and antd. 一个使用reactjs,redux-thunk,axios 和 antd 的单页网页应用。
 
 There is a another version of this application but developped with `redux-saga` and a better structure. See more info:(https://github.com/SoloistWang/reactjs-redux-saga)
 还有另外一个使用`redux-saga`，文件夹架构优化的版本，欢迎参考。
