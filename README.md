@@ -1,7 +1,8 @@
-# A shopping web application developped with reactjs, redux-thunk, axios and antd. 一个使用reactjs,redux-thunk,axios 和 antd 的单页网页应用。
+# A shopping web app based reactjs,redux and antd. 基于reactjs和redux的购物网站单页应用。
+ This is a shopping web application developped with reactjs, redux-thunk, axios and antd. 这是一个使用reactjs,redux-thunk,axios 和 antd 等的单页网页应用。
 
-There is a another version of this application but developped with `redux-saga` and a better structure. See more info:(https://github.com/SoloistWang/reactjs-redux-saga)
-还有另外一个使用`redux-saga`，文件夹架构优化的版本，欢迎参考。
+**There is a another version of this application but developped with `redux-saga` and a better structure. See more info:(https://github.com/SoloistWang/reactjs-redux-saga)**
+**还有另外一个使用`redux-saga`，文件夹架构优化的版本，欢迎参考。**
 
 This project was developed with [Create React App].See more info (https://github.com/facebook/create-react-app).
 项目使用`Create React App`构建。
@@ -63,14 +64,14 @@ yarn build
 yarn test 
 ```
 
-## 5. Using redux-devtools-extension. 使用redux浏览器扩展插件。
+## 5. Running App. 运行应用。
+
+Using the `redux-devtools-extension` first. 使用redux浏览器扩展插件。
 Click to download the extension.
 <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd">![redux-devtools](images/redux-dev.png)</a>
 
-## 6. Running App. 运行应用。
-Before running the app,visit this repo to get the backstage code and run the server, so you can use api.
-运行应用之前建议下载后台代码并打开服务器，保证接口顺利运行。
-https://github.com/SoloistWang/koa2-mongodb-jwt-server
+**Before running the app,visit this repo to get the backstage code and run the server, so you can use api.运行应用之前建议下载后台代码并打开服务器，保证接口顺利运行。https://github.com/SoloistWang/koa2-mongodb-jwt-server**
+
  Visit local website.
  http://localhost:3000/search
 
