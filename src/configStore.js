@@ -2,10 +2,10 @@ import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import { routerMiddleware, connectRouter } from 'connected-react-router'
 import thunk from 'redux-thunk'
 import { createBrowserHistory } from 'history';
-import starReducer from './reducer/starDk';
-import searchReducer from './reducer/searchDk';
-import userReducer from './reducer/userDK';
-import listReducer from './reducer/productlistDk';
+import starReducer from './reducers/starDk';
+import searchReducer from './reducers/searchDk';
+import userReducer from './reducers/userDK';
+import listReducer from './reducers/productlistDk';
 
 
 

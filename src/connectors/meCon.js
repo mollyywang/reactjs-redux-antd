@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import MeCom from '../components/meCom';
 import { withRouter } from 'react-router';
-import { getIsLogin, getName, getToken } from '../action/userAt';
+import { getIsLogin, getName, getToken } from '../actions/userAt';
 
 const mapStateToProps = (state, props) => {
     return {

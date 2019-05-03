@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ProductCom from '../components/productCom';
-import { addToStar, removeFromStar, isInStar } from '../action/starAt';
-import { getIsLogin } from '../action/userAt';
+import { addToStar, removeFromStar, isInStar } from '../actions/starAt';
+import { getIsLogin } from '../actions/userAt';
 import { withRouter } from 'react-router';
 
 const mapStateToProps = (state, props) => {

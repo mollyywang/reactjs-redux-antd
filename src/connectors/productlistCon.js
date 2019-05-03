@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import produlistCom from '../components/productlistCom';
-import { getItems, getIndex, productsGet, getCounts, getAllNums, getFetching, resetIndex } from '../action/productlistAt';
-import { getName } from '../action/searchAt';
-import { getIsLogin } from '../action/userAt';
+import { getItems, getIndex, productsGet, getCounts, getAllNums, getFetching, resetIndex } from '../actions/productlistAt';
+import { getName } from '../actions/searchAt';
+import { getIsLogin } from '../actions/userAt';
 
 const mapStateToProps = (state, props) => {
     return {

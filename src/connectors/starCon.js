@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import StarCom from '../components/starCom';
-import { getIsLogin, getName, getToken } from '../action/userAt';
-import { getItems, getFetching, removeFromStar, starGet } from '../action/starAt';
+import { getIsLogin, getName, getToken } from '../actions/userAt';
+import { getItems, getFetching, removeFromStar, starGet } from '../actions/starAt';
 
 const mapStateToProps = (state, props) => {
     return {

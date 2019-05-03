@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import SearchForm from '../components/searchCom'
-import { getName, changeName, getSearching, changeSearching } from '../action/searchAt'
-import { productsGet, getAllNums, resetIndex } from '../action/productlistAt'
+import { getName, changeName, getSearching, changeSearching } from '../actions/searchAt'
+import { productsGet, getAllNums, resetIndex } from '../actions/productlistAt'
 import { withRouter } from 'react-router'
 
 const mapStateToProps = (state, props) => {

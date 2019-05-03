@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import FooterCom from '../components/footerCom';
-import { getName } from '../action/searchAt';
-import { getToken } from '../action/userAt';
+import { getName } from '../actions/searchAt';
+import { getToken } from '../actions/userAt';
 
 const mapStateToProps = (state, props) => {
     return {

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import UserCom from '../components/userCom';
-import { logout, getIsLogin, getName, getToken, getLogining, changeName, userDoLogin } from '../action/userAt';
+import { logout, getIsLogin, getName, getToken, getLogining, changeName, userDoLogin } from '../actions/userAt';
 import { Form } from 'antd';
 
 const mapStateToProps = (state, props) => {
