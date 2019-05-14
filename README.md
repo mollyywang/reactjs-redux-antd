@@ -42,7 +42,7 @@ yarn install
   - `components`: static components. 静态组件。
   - `connectors`: component connectors. 连接器。
   - `pages`: views. 页面。
-  - `reducers`: Receive antions then change state. 根据收到的动作改变状态。
+  - `reducers`: Receive antions then change state. 状态处理函数。
   - `styles`: CSS, Less, and Icons. 样式文件。
   - `util`: Common and general functions. 基础和全局函数。
 - config-overrides.js:Personal config. 个人设置。
@@ -70,7 +70,7 @@ Using the `redux-devtools-extension` first. 使用redux浏览器扩展插件。
 Click to download the extension.
 <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd">![redux-devtools](images/redux-dev.png)</a>
 
-**Before running the app,visit this repo to get the backstage code and run the server, so you can use api.运行应用之前建议下载后台代码并打开服务器，保证接口顺利运行。https://github.com/SoloistWang/koa2-mongodb-jwt-server**
+**Before running the app,visit this repo to get the backstage code and run the server, so you can use api.See more info https://github.com/SoloistWang/koa2-mongodb-jwt-server 运行应用之前建议下载后台代码并打开服务器，保证接口顺利运行。**
 
  Visit local website.
  http://localhost:3000/search
